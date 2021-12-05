@@ -1,0 +1,51 @@
+﻿<Window x:Class="Lab6_team1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab6_team1"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+    Title="MainWindow" Height="600" Width="1000">
+
+    <Window.Resources>
+        <local:Shop x:Key="shop"/>
+    </Window.Resources>
+
+    <Grid Background="Lavender">
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Foreground="Indigo" Grid.Column="0" x:Name="lblcashBox" HorizontalContentAlignment="Center" Margin="44,98,159,0" VerticalAlignment="Top" Width="114" />
+        <Label Foreground="Indigo" Grid.Column="0" Content="Cashbox:" FontSize="20" FontWeight="DemiBold" HorizontalContentAlignment="Center" Margin="44,29,159,0" VerticalAlignment="Top" Width="114" />
+
+        <Button Background="MediumPurple" Foreground="Lavender" Height="40" Width="200" Content="Start" Name="startNewShopButton" Click="startNewShopButton_Click" FontWeight="DemiBold" Grid.Column="0" Grid.Row="1" Margin="58,101,59,101"/>
+        <Button Background="MediumPurple" Foreground="Lavender" Height="40" Width="200" FontWeight="DemiBold" Content="Get info" Name="loadShopButton" Click="loadShopButton_Click" Grid.Column="2" Grid.Row="1" Margin="59,101,58,101"/>
+        <Button Background="MediumPurple" Foreground="Lavender" Height="40" Width="200" FontWeight="DemiBold" Content="Stop" Name="stopButton" Click="stopButton_Click" Grid.Column="1" Grid.Row="1" Margin="58,44,58,158" />
+        <Button Background="MediumPurple" Foreground="Lavender" Height="40" Width="200" FontWeight="DemiBold" Content="Change mode" Name="changeModeButton" Click="changeMode_Click" Grid.Row="1" Grid.Column="1" Margin="58,158,58,44" />
+
+        <ListView Background="Lavender" Foreground="Indigo" Grid.Row="0" Margin="207,0,207,0" Name="productList" Grid.ColumnSpan="3" ItemsSource="{Binding Source={StaticResource shop},Path=Storage,UpdateSourceTrigger=PropertyChanged}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding productName}" />
+                    <GridViewColumn Header="Count" Width="50" DisplayMemberBinding="{Binding productCount}" />
+                    <GridViewColumn Header="Initial Price" Width="100" DisplayMemberBinding="{Binding productInitialPrice}" />
+                    <GridViewColumn Header="Selling Price" Width="100" DisplayMemberBinding="{Binding productSellingPrice}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+    </Grid>
+</Window>
+    
